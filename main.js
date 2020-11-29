@@ -9,4 +9,4 @@ bot.once('ready', () => {
     ayuda(bot);
 });
 
-bot.login('NzgxMjQ1NDMxNzc4MjQ2NzE2.X761gQ.1eCKFRouGsQgvm_jAt7keUcoONk');
+bot.login('');
