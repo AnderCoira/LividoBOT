@@ -29,7 +29,7 @@ module.exports = welcome => {
 
         //Construccion del fondo del canvas
         const background = await Canvas.loadImage(
-            path.join(__dirname, '../Funcionalidad/WelcomeBackground/welcomeBack.png')
+            path.join(__dirname, '../Imagenes/WelcomeBackground/welcomeBack.png')
           );
            x = 0;
            y = 0;
