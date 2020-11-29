@@ -12,4 +12,4 @@ bot.once('ready', () => {
     welcome(bot);
 });
 
-bot.login('NzgxMjQ1NDMxNzc4MjQ2NzE2.X761gQ.QQ3frb0OuJnQmT-IxutQMdGa0zE');
+bot.login('NzgxMjQ1NDMxNzc4MjQ2NzE2.X761gQ.3mSEpsIA90VxPpGBvQHbiuLvsgo');
