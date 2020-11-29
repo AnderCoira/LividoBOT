@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const welcome = require('./welcome');
+const welcome = require('./Funcionalidad/welcome.js');
 
 //Comando de llamada al bot
 const botCall = 'puto ';
@@ -11,4 +11,4 @@ bot.once('ready', () => {
     welcome(bot);
 });
 
-bot.login('');
+bot.login('NzgxMjQ1NDMxNzc4MjQ2NzE2.X761gQ.gC-wLXQYpqOA7o65kf1QaV9kKpA');

@@ -4,7 +4,7 @@ const Canvas = require('canvas');
 const path = require('path');
 
 module.exports = welcome => {
-    const welcomeChannelID = '781106068264058890';
+    const welcomeChannelID = '781247183789228072';
     const ruleChannelID = '781143942262554644';
     // 781247183789228072 //ID test channel
     // 781106068264058890 // ID welcome channel
@@ -29,7 +29,7 @@ module.exports = welcome => {
 
         //Construccion del fondo del canvas
         const background = await Canvas.loadImage(
-            path.join(__dirname, './welcomeBack.png')
+            path.join(__dirname, '../Funcionalidad/WelcomeBackground/welcomeBack.png')
           );
            x = 0;
            y = 0;
