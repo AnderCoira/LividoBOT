@@ -11,4 +11,4 @@ bot.once('ready', () => {
     welcome(bot);
 });
 
-bot.login('NzgxMjQ1NDMxNzc4MjQ2NzE2.X761gQ.gC-wLXQYpqOA7o65kf1QaV9kKpA');
+bot.login('');
