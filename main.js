@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const welcome = require('./Funcionalidad/welcome.js');
-const ayuda = require('./Funcionalidad/help.js');
+const help = require('./Funcionalidad/help.js');
 
 bot.once('ready', () => {
     console.log('Estoy listo -- COMPILAME OTRA VEZ CUANDO HAGAS CAMBIOS PEDAZO MONGUER');
     welcome(bot);
-    ayuda(bot);
+    help(bot);
 });
 
 bot.login('');
