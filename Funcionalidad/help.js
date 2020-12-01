@@ -10,9 +10,10 @@ module.exports = help => {
 
         const args = message.content.slice(botCall.length).trim().split(/ +/);
         const command = args.shift().toLowerCase();
+        const helpOption = message.content.split('-help ')[1];
 
         if(command === 'help'){
-            message.channel.send('Te helpeo');
+            message.channel.send('kaka');
         }
 
     });
