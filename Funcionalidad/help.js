@@ -13,7 +13,62 @@ module.exports = help => {
         const helpOption = message.content.split('-help ')[1];
 
         if(command === 'help'){
-            message.channel.send('kaka');
+
+            let subHelp = message.content.split('help ')[1];
+            let embedMessage = {};
+
+            switch (subHelp) {
+                case undefined:
+                    embedMessage = {
+                        "embed": {
+                          "title": "Comandos de ayuda - GENERAL",
+                          "color": 16076624,
+                          "fields": [
+                            {
+                              "name": "1️⃣ -help < riot >",
+                              "value":  "Ayuda sobre los comandos de League of legends",
+                            },
+                            {
+                              "name": "2️⃣ -help < bullying >",
+                              "value":  "Ayuda sobre los comandos de bullying",
+                            }
+                          ]
+                        }
+                    }
+                    message.channel.send(embedMessage);
+                    break;
+            
+                case 'riot':
+                    embedMessage = {
+                        "embed": {
+                          "title": "Comandos de ayuda - RIOT",
+                          "color": 16076624,
+                          "fields": [
+                            {
+                              "name": "1️⃣ -summoner < summoner name >",
+                              "value":  "Ver las estadisticas de un summoner",
+                            }
+                          ]
+                        }
+                    }
+                    message.channel.send(embedMessage);
+                    break;
+                  case 'bullying':
+                      embedMessage = {
+                          "embed": {
+                            "title": "Comandos de ayuda - BULLYING",
+                            "color": 16076624,
+                            "fields": [
+                              {
+                                "name": "1️⃣ -bullying < nombre >",
+                                "value":  "Hacer bullying a personas como main katarinas",
+                              }
+                            ]
+                          }
+                      }
+                      message.channel.send(embedMessage);
+                      break;
+            }
         }
 
     });
