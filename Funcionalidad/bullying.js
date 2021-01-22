@@ -21,6 +21,12 @@ module.exports = bullying => {
             case 'dante':
                 message.channel.send('Un ciego de mierda >:(');
                 break;
+            case 'coira':
+                message.channel.send('Te has confundido de comando, querias poner -elite500');
+                break;
+            case 'ruben':
+                message.channel.send('Si te gusta tokyo ghoul no eres mi amigo >:(');
+                break;
         }
 
     });

@@ -10,19 +10,18 @@ module.exports = music => {
 
     let musicUrls = [];
 
-    music.on('message', async message => {
+    music.on('message', async (message) => {
         if (!message.content.startsWith(botCall) || message.author.bot) return;
 
         const args = message.content.slice(botCall.length).trim().split(/ +/);
         const command = args.shift().toLowerCase();
-
+        
         if(command === 'play'){
             let urlSplit = message.content.split(" ");
             let url = urlSplit[1];
             const voiceChannel = message.member.voice.channel;
 
             if(ytdl.validateURL(url)){
-                console.log('URL valida');
                 let existSong = musicUrls.some(song => song === url);
                 if(!existSong){
                     musicUrls.push(url);
@@ -39,17 +38,114 @@ module.exports = music => {
                         }
                     }
                 }
+            }else{
+                let embedMessage = {
+                    "embed": {
+                      "title": "",
+                      "color": 16076624,
+                      "fields": [
+                        {
+                          "name": "Error URL",
+                          "value":  "La URL no existe",
+                        }
+                      ]
+                    }
+                }
+                message.channel.send(embedMessage);
             }
         }else if(command === 'stop'){
             const voiceChannel = message.member.voice.channel;
             voiceChannel.leave();
+        }else if(command === 'skip'){
+            const voiceChannel = message.member.voice.channel;
+            const voiceConnection = await voiceChannel.join();
+
+            musicUrls.shift();
+
+            if(musicUrls.length === 0){
+                voiceChannel.leave();
+            }else{
+
+                let embedMessage = {
+                    "embed": {
+                      "title": "",
+                      "color": 16076624,
+                      "fields": [
+                        {
+                          "name": "⏭ Skip ⏭",
+                          "value":  "Skipeando canción...",
+                        }
+                      ]
+                    }
+                }
+                message.channel.send(embedMessage);
+
+                setTimeout(() => {
+                    playSong(message.channel, voiceConnection, voiceChannel);
+                }, 1000);
+            }
+        }else if(command === 'add'){
+            let urlSplit = message.content.split(" ");
+            let url = urlSplit[1];
+
+            if(ytdl.validateURL(url)){
+                let existSong = musicUrls.some(song => song === url);
+                if(!existSong){
+                    if(musicUrls.length !== 0){
+                        let embedMessage = {
+                            "embed": {
+                              "title": "",
+                              "color": 16076624,
+                              "fields": [
+                                {
+                                  "name": "✅ Canción añadida ✅",
+                                  "value":  "Canción añadida con exito",
+                                }
+                              ]
+                            }
+                        }
+
+                        musicUrls.push(url);
+                        message.channel.send(embedMessage);
+                    }else{
+                        let embedMessage = {
+                            "embed": {
+                              "title": "",
+                              "color": 16076624,
+                              "fields": [
+                                {
+                                  "name": "💤 Bot dormido 💤",
+                                  "value":  "Para añadir una canción primero tienes que despertar al bot con ?play <canción>",
+                                }
+                              ]
+                            }
+                        }
+                        message.channel.send(embedMessage);
+                    }
+                    
+                }
+            }else{
+                let embedMessage = {
+                    "embed": {
+                      "title": "",
+                      "color": 16076624,
+                      "fields": [
+                        {
+                          "name": "❌ Error URL ❌",
+                          "value":  "La URL no existe",
+                        }
+                      ]
+                    }
+                }
+                message.channel.send(embedMessage);
+            }
         }
 
     });
 
     async function playSong(messageChannel, voiceConnection, voiceChannel){
         const stream = ytdl(musicUrls[0], { filter: 'audioonly', highWaterMark: 1<<25 });
-        const dispatcher = voiceConnection.play(stream, streamOptions);
+        const dispatcher = await voiceConnection.play(stream, streamOptions);
 
         dispatcher.on('finish', () => {
             musicUrls.shift();
@@ -59,7 +155,7 @@ module.exports = music => {
             }else{
                 setTimeout(() => {
                     playSong(messageChannel, voiceConnection, voiceChannel);
-                }, 4000);
+                }, 1000);
             }
         });
     }

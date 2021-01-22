@@ -32,6 +32,11 @@ module.exports = riot => {
 
             //Metodo para pillar los datos el summoner introducido en discord
             if(summonerName !== undefined){
+              try {
+                
+              } catch (error) {
+                
+              }
                 getSummonerByName(summonerName).then(
                     data => {
                         summonerData = data;
@@ -159,6 +164,53 @@ module.exports = riot => {
                     }
                 );
             }
+        }else if(command === 'serverstatus'){
+
+          let serverStatusResponse;
+          let serverIncidences = [];
+          let spanishStatus = {severity: [], titles: [], translations: []};
+          let finalStatus = [];
+
+          getServerStatus().then(
+            data => {
+              //Guardar la respuesta del server en formato JSON
+              serverStatusResponse = data;
+              //Pillar los datos en español
+              serverStatusResponse.incidents.forEach(element => {
+                serverIncidences.push(element);
+              });
+
+             serverIncidences.forEach(element => {
+               spanishStatus.severity.push(element.incident_severity);
+              spanishStatus.titles.push(element.titles.find(title => title.locale === 'es_ES'));
+              element.updates.forEach(element => {
+                spanishStatus.translations.push(element.translations.find(update => update.locale === 'es_ES'));
+              });
+             });
+             
+             for(let i = 0; i < spanishStatus.severity.length; i++){
+                finalStatus.push({severity: spanishStatus.severity[i], title: spanishStatus.titles[i].content, translation: spanishStatus.translations[i].content});
+             }
+
+             finalStatus.forEach(element => {
+              embedMessage = {
+                "embed": {
+                  "title": element.severity,
+                  "description": "", 
+                  "color": 16076624,
+                  "fields": [
+                    {
+                      "name": element.title,
+                      "value":  element.translation,
+                    }
+                  ]
+                }
+              }
+              message.channel.send(embedMessage);
+             });
+
+            }
+          );
         }
     });
 
@@ -166,11 +218,17 @@ module.exports = riot => {
         let response = await fetch(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${apiKey}`);
         let data = await response.json();
         return data;
-    }
+      }
 
     async function getSummonerAllData(encryptedSummonerId){
         let response = await fetch(`https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${apiKey}`);
         let data = await response.json();
         return data;
     }
+
+    async function getServerStatus(){
+      let response = await fetch(`https://lol.secure.dyn.riotcdn.net/channels/public/x/status/euw1.json`);
+      let data = await response.json();
+      return data;
+  }
 }

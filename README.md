@@ -6,3 +6,8 @@ Teconologias usadas:
 
 IDE:
 - Visual Studio Code
+
+Librerias:
+- Discord.js
+- canvas
+- ytdl

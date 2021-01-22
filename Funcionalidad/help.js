@@ -47,6 +47,10 @@ module.exports = help => {
                             {
                               "name": "1️⃣ -summoner < summoner name >",
                               "value":  "Ver las estadisticas de un summoner",
+                            },
+                            {
+                              "name": "2️⃣ -serverstatus",
+                              "value":  "Ver el estado del server EUW",
                             }
                           ]
                         }
