@@ -31,6 +31,10 @@ module.exports = help => {
                             {
                               "name": "2️⃣ -help < bullying >",
                               "value":  "Ayuda sobre los comandos de bullying",
+                            },
+                            {
+                              "name": "3️⃣ -help < musica >",
+                              "value":  "Ayuda sobre los comandos para añadir musica",
                             }
                           ]
                         }
@@ -50,7 +54,7 @@ module.exports = help => {
                             },
                             {
                               "name": "2️⃣ -serverstatus",
-                              "value":  "Ver el estado del server EUW",
+                              "value":  "Ver el estado del servdiro de riot EUW",
                             }
                           ]
                         }
@@ -66,6 +70,33 @@ module.exports = help => {
                               {
                                 "name": "1️⃣ -bullying < nombre >",
                                 "value":  "Hacer bullying a personas como main katarinas",
+                              }
+                            ]
+                          }
+                      }
+                      message.channel.send(embedMessage);
+                      break;
+                  case 'musica':
+                      embedMessage = {
+                          "embed": {
+                            "title": "Comandos de ayuda - MUSICA",
+                            "color": 16076624,
+                            "fields": [
+                              {
+                                "name": "1️⃣ ?play < Link de la cancion de YouTube >",
+                                "value":  "Empezar a escuchar una canción",
+                              },
+                              {
+                                "name": "2️⃣ ?add < Link de la cancion de YouTube >",
+                                "value":  "Añadir una canción a la cola",
+                              },
+                              {
+                                "name": "3️⃣ ?skip",
+                                "value":  "Saltar la canción que esta sonando",
+                              },
+                              {
+                                "name": "4️⃣ ?stop",
+                                "value":  "Parar la reproducción de las canciones",
                               }
                             ]
                           }
