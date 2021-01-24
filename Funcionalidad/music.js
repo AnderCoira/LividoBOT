@@ -16,7 +16,7 @@ module.exports = music => {
         const args = message.content.slice(botCall.length).trim().split(/ +/);
         const command = args.shift().toLowerCase();
         
-        if(command === 'play'){
+        if(command === 'play' && musicUrls.length <= 0){
             let urlSplit = message.content.split(" ");
             let url = urlSplit[1];
             const voiceChannel = message.member.voice.channel;
@@ -54,6 +54,7 @@ module.exports = music => {
                 message.channel.send(embedMessage);
             }
         }else if(command === 'stop'){
+            musicUrls = [];
             const voiceChannel = message.member.voice.channel;
             voiceChannel.leave();
         }else if(command === 'skip'){
@@ -139,6 +140,20 @@ module.exports = music => {
                 }
                 message.channel.send(embedMessage);
             }
+        }else if(command === 'play' && musicUrls.length > 0){
+            let embedMessage = {
+                "embed": {
+                  "title": "",
+                  "color": 16076624,
+                  "fields": [
+                    {
+                      "name": "❗ Bot de musica inicializado ❗",
+                      "value":  "Si quieres añadir mas canciones usa el comando ?add < Link de YouTube >",
+                    }
+                  ]
+                }
+            }
+            message.channel.send(embedMessage);
         }
 
     });
