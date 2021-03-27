@@ -3,7 +3,9 @@ const { MessageAttachment } = require('discord.js');
 const ytdl = require('ytdl-core');
 
 //Comando de llamada al bot
-const botCall = '?';
+const botCall = '-';
+
+//Opciones para el bot
 const streamOptions = { seek: 0, volume: 1 };
 
 module.exports = music => {
@@ -36,6 +38,21 @@ module.exports = music => {
                                 console.log(error);
                             }
                         }
+                    }else{
+                      musicUrls = [];
+                      let embedMessage = {
+                        "embed": {
+                          "title": "",
+                          "color": 16076624,
+                          "fields": [
+                            {
+                              "name": "Canal de voz no encontrado",
+                              "value":  "Debes estar en un canal de voz para poner música",
+                            }
+                          ]
+                        }
+                    }
+                    message.channel.send(embedMessage);
                     }
                 }
             }else{
@@ -116,7 +133,7 @@ module.exports = music => {
                               "fields": [
                                 {
                                   "name": "💤 Bot dormido 💤",
-                                  "value":  "Para añadir una canción primero tienes que despertar al bot con ?play <canción>",
+                                  "value":  "Para añadir una canción primero tienes que despertar al bot con -play <canción>",
                                 }
                               ]
                             }
@@ -147,8 +164,8 @@ module.exports = music => {
                   "color": 16076624,
                   "fields": [
                     {
-                      "name": "❗ Bot de musica inicializado ❗",
-                      "value":  "Si quieres añadir mas canciones usa el comando ?add < Link de YouTube >",
+                      "name": "❗ Bot de música ya está en uso ❗",
+                      "value":  "Si quieres añadir mas canciones usa el comando -add < canción >",
                     }
                   ]
                 }

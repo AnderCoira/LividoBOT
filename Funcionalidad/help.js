@@ -83,19 +83,19 @@ module.exports = help => {
                             "color": 16076624,
                             "fields": [
                               {
-                                "name": "1️⃣ ?play < Link de la cancion de YouTube >",
+                                "name": "1️⃣ -play < Link de la cancion de YouTube >",
                                 "value":  "Empezar a escuchar una canción",
                               },
                               {
-                                "name": "2️⃣ ?add < Link de la cancion de YouTube >",
+                                "name": "2️⃣ -add < Link de la cancion de YouTube >",
                                 "value":  "Añadir una canción a la cola",
                               },
                               {
-                                "name": "3️⃣ ?skip",
+                                "name": "3️⃣ -skip",
                                 "value":  "Saltar la canción que esta sonando",
                               },
                               {
-                                "name": "4️⃣ ?stop",
+                                "name": "4️⃣ -stop",
                                 "value":  "Parar la reproducción de las canciones",
                               }
                             ]
