@@ -39,7 +39,7 @@
 This project is built with:
 * [Node.js](https://nodejs.org/es/)
 * [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
-* [Discord.js](https://discord.js.org/#/)discor
+* [Discord.js](https://discord.js.org/#/)
 * [Canvasjs](https://www.npmjs.com/package/canvasjs)
 * [ytdl](https://www.npmjs.com/package/ytdl)
 
