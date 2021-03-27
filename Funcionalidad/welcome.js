@@ -43,7 +43,7 @@ module.exports = welcome => {
         // Display user text
         // ctx.fillStyle = '#d40000'; //Color del texto
         let gradiente = ctx.createLinearGradient(500, 250, 150, 100);
-        gradiente.addColorStop(0, "rgb(0, 0, 0)");
+        gradiente.addColorStop(0, "rgb(255, 90, 61)");
         gradiente.addColorStop(1, "rgb(255, 0, 0)");
         ctx.fillStyle = gradiente;
         ctx.shadowBlur = 1; //Blur de la sombra

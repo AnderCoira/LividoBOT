@@ -15,4 +15,4 @@ bot.once('ready', () => {
     music(bot);
 });
 
-bot.login('');
+bot.login('NzgxMjQ1NDMxNzc4MjQ2NzE2.X761gQ.qKEZ_J8mCwMAWLSwem1Ivai9WOU');
