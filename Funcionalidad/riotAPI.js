@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { MessageAttachment } = require('discord.js');
 const fetch = require("node-fetch");
-const apiKey = 'RGAPI-b2d5a0c2-3907-4e54-b526-ea87288e4025';
+const apiKey = '';
 const botCall = '-';
 
 module.exports = riot => {
